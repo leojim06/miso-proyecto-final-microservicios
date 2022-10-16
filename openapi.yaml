@@ -1,0 +1,42 @@
+# [START swagger]
+swagger: "2.0"
+info:
+  description: "API Gateway SportApp"
+  title: "SportApp"
+  version: "1.0.0"
+host: "sportapp.endpoints.sportapp-miso-grupo6.cloud.goog"
+# [END swagger]
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+schemes:
+# Uncomment the next line if you configure SSL for this API.
+# - "https"
+  - "http"  
+paths:
+  "/":
+    get:
+      description: "HealthCheck"
+      operationId: "healthCheck"
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: Servicio arriba
+  "/greet":
+    get:
+      description: "Greet Secure"
+      operationId: "greet"
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: Servicio arriba
+      security:
+        - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"              
