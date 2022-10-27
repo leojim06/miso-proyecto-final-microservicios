@@ -24,6 +24,13 @@ export class UsuarioController {
     });
   }
 
+  @MessagePattern({ role: 'user', cmd: 'getById' })
+  async findById(data: any): Promise<UsuarioEntity> {
+    return await this.userService.findOne({
+      where: { id: data.idDeportista },
+    });
+  }
+
   @UseGuards(AuthGuard)
   @Get('greet')
   async greet(): Promise<string> {
