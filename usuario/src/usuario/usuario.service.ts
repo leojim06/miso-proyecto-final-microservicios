@@ -1,5 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import {
+  BusinessError,
+  BusinessLogicException,
+} from 'src/shared/errors/business-errors';
 import { FindOneOptions, InsertResult, Repository } from 'typeorm';
 import { UsuarioEntity } from './usuario.entity';
 
@@ -29,7 +33,16 @@ export class UsuarioService {
       return res;
     } catch (e) {
       Logger.log(e);
-      throw e;
+      if (
+        e.message.includes('duplicate key value violates unique constraint')
+      ) {
+        throw new BusinessLogicException(
+          'El correo electrónico ingresado ya se encuentra registrado',
+          BusinessError.PRECONDITION_FAILED,
+        );
+      } else {
+        throw e;
+      }
     }
   }
 }
