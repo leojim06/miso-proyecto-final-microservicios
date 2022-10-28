@@ -164,6 +164,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: ms-usuario
-  minReplicas: 3
-  maxReplicas: 10
+  minReplicas: 1
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 60          
