@@ -11,7 +11,7 @@ metadata:
     app: ms-usuario
 # Especificaciones del elemento
 spec:
-  replicas: 30
+  replicas: 2
   # K8s agrupa los elementos del Deployment y los interconecta entre si utilizando etiquetas
   # Aqui definimos como seleccionar los elementos juntos
   selector:
@@ -103,7 +103,7 @@ spec:
                   optional: false
           # Realizar pull siempre a la imagen
           imagePullPolicy: Always
-      serviceAccountName: ksa-sportapp
+      serviceAccountName: ksa-dev-sportapp
 
 # Vamos a especificar el balanceador de carga en este mismo archivo
 # para ello vamos a crear otro documento separado, esto se hace con el operador "---"
@@ -164,6 +164,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: ms-usuario
-  minReplicas: 30
-  maxReplicas: 45
+  minReplicas: 1
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 60          
