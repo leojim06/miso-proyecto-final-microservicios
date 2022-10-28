@@ -20,7 +20,7 @@ export class UsuarioController {
   @MessagePattern({ role: 'user', cmd: 'get' })
   async getUser(data: any): Promise<UsuarioEntity> {
     return await this.userService.findOne({
-      where: { email: data.login },
+      where: { email: data.username },
     });
   }
 

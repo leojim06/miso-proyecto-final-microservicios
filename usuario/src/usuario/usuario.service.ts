@@ -18,13 +18,13 @@ export class UsuarioService {
     return await this.usuarioEntityRepository.findOne(query);
   }
 
-  async createUsuarioEntity(UsuarioEntity: any): Promise<InsertResult> {
+  async createUsuarioEntity(usuario: UsuarioEntity): Promise<InsertResult> {
     try {
       /**
        * Perform all needed checks
        */
 
-      const usuarioEntity = this.usuarioEntityRepository.create(UsuarioEntity);
+      const usuarioEntity = this.usuarioEntityRepository.create(usuario);
 
       const res = await this.usuarioEntityRepository.insert(usuarioEntity);
 
