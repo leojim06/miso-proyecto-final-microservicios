@@ -110,16 +110,16 @@ spec:
             port:
               number: 80
       - path: /suscripciones/*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: service-ms-catalogo
-                port:
-                  number: 80
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-catalogo
+            port:
+              number: 80
       - path: /niveles-plan/*
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: service-ms-catalogo
-                port:
-                  number: 80                                                              
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-catalogo
+            port:
+              number: 80                                                              
