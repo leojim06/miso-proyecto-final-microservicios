@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    iam.gke.io/gcp-service-account: sportapp-gke-sa@sportapp-miso-grupo6.iam.gserviceaccount.com
+  name: ksa-dev-sportapp
+  namespace: development
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: autenticador-config-map
+  namespace: development  
+data:
+  USER_MS_HOST: "sportapp-ms-usuario-tcp-service.development"
+  USER_MS_PORT: "80"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: usuario-config-map
+  namespace: development  
+data:
+  AUTH_MS_HOST: "sportapp-ms-autenticador-tcp-service.development"
+  AUTH_MS_PORT: "80"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: usuario-secrets
+  namespace: development
+type: Opaque    
+stringData:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: R>e~z`3x}69;QA?X
+  POSTGRES_HOST: "10.152.112.3"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: ms_user
+---    
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sportapp-ingress
+  namespace: development
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: ingress-public-ip
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /web/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sportapp-web-service
+            port:
+              number: 80
+      - path: /usuario/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sportapp-ms-usuario-service
+            port:
+              number: 80
+      - path: /autenticador/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: sportapp-ms-autenticador-service
+            port:
+              number: 80    
+      - path: /perfil-deportivo/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-perfil-deportivo
+            port:
+              number: 80
+      - path: /molestias/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-catalogo
+            port:
+              number: 80
+      - path: /lesiones/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-catalogo
+            port:
+              number: 80
+      - path: /deportes/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-catalogo
+            port:
+              number: 80
+      - path: /planes-entrenamiento/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: service-ms-planes-entrenamiento
+            port:
+              number: 80                                                           
