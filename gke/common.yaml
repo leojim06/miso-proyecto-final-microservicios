@@ -102,7 +102,7 @@ spec:
             name: service-ms-catalogo
             port:
               number: 80
-      - path: /planes-entrenamiento/*
+      - path: /api/v1/planes-entrenamiento/*
         pathType: ImplementationSpecific
         backend:
           service:
