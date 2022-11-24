@@ -151,3 +151,10 @@ spec:
                 name: service-ms-catalogo
                 port:
                   number: 80
+          - path: /socios-negocio/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: sportapp-ms-usuario-service
+                port:
+                  number: 80
