@@ -144,3 +144,10 @@ spec:
                 name: service-ms-perfil-alimenticio
                 port:
                   number: 80
+          - path: /categorias-socio/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-ms-catalogo
+                port:
+                  number: 80
