@@ -165,3 +165,10 @@ spec:
                 name: service-ms-catalogo
                 port:
                   number: 80
+          - path: /perfil-demografico/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-ms-perfil-demografico
+                port:
+                  number: 80
