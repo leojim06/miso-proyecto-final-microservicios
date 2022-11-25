@@ -48,7 +48,7 @@ metadata:
   name: sportapp-ingress
   namespace: development
   labels:
-    - "company": "miso"
+    "company": "miso"
   annotations:
     kubernetes.io/ingress.global-static-ip-name: ingress-public-ip
 spec:
