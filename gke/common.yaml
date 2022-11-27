@@ -174,3 +174,17 @@ spec:
                 name: service-ms-perfil-demografico
                 port:
                   number: 80
+          - path: /complementos-plan/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-ms-catalogo
+                port:
+                  number: 80
+          - path: /medios-pago/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-ms-catalogo
+                port:
+                  number: 80
