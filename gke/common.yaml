@@ -14,6 +14,19 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: sportapp-config-map
+  namespace: development
+data:
+  USER_MS_HOST: "sportapp-ms-usuario-tcp-service.development"
+  USER_MS_PORT: "80"
+  AUTH_MS_HOST: "sportapp-ms-autenticador-tcp-service.development"
+  AUTH_MS_PORT: "80"
+  MS_CATALOGO_HOST: "service-ms-tcp-catalogo.development"
+  MS_CATALOGO_PORT: "80"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: autenticador-config-map
   namespace: development
 data:
@@ -28,19 +41,6 @@ metadata:
 data:
   AUTH_MS_HOST: "sportapp-ms-autenticador-tcp-service.development"
   AUTH_MS_PORT: "80"
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: usuario-secrets
-  namespace: development
-type: Opaque
-stringData:
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: R>e~z`3x}69;QA?X
-  POSTGRES_HOST: "10.152.112.3"
-  POSTGRES_PORT: "5432"
-  POSTGRES_DB: ms_user
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
