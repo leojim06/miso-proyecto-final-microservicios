@@ -188,11 +188,13 @@ spec:
                 name: service-ms-catalogo
                 port:
                   number: 80
-          - path: /suscripciones/*
+          - path: /gestion-planes/*
             pathType: ImplementationSpecific
             backend:
               service:
                 name: service-ms-suscripciones
+                port:
+                  number: 80
           - path: /evento/*
             pathType: ImplementationSpecific
             backend:
