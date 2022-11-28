@@ -174,3 +174,10 @@ spec:
                 name: service-ms-perfil-demografico
                 port:
                   number: 80
+          - path: /evento/*
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: service-ms-evento
+                port:
+                  number: 80
